@@ -66,9 +66,10 @@ def transaction_success(entered_payment, drink_cost):
 
 
 def make_coffee(drink_name, ordered_ingredients):
-    """Makes ordered coffee once the transaction is checked successful"""
+    """Makes ordered coffee once the transaction is checked successfully"""
     for item in ordered_ingredients:
         resources[item] -= ordered_ingredients[item]
+    print(f"Here is your {user_input}, enjoy ☕️")
 
 
 machine_on = True
@@ -87,9 +88,7 @@ while machine_on:
             payment = process_coins()
             is_tran_success = transaction_success(payment, drink['cost'])
             if is_tran_success:
-                make_coffee(user_input, drink['ingredients'])
-                print(f"Here is your {user_input}, enjoy ☕️")
-                print()
+                make_coffee(user_input, drink['ingredients'])   
             else:
                 print("Transaction failed, Here is your refund")
                 machine_on = False
